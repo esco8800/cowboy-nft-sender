@@ -66,5 +66,6 @@ for private_key in keys_list:
     account = web3.eth.account.from_key(private_key)
     wallet = account.address
     token_ids = get_tokens_of_wallet(wallet, ids)
-    transfer_all_nfts(wallet, private_key, config.to_address, token_ids)
-    start = max(token_ids)
+    if len(token_ids) > 0:
+        transfer_all_nfts(wallet, private_key, config.to_address, token_ids)
+        start = max(token_ids)
